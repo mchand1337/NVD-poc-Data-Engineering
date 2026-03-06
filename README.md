@@ -1,4 +1,4 @@
-## NVD PoC – Data Engineering Interview Story
+## NVD PoC – Data Engineering
 
 ### What this repo demonstrates
 - End-to-end ingestion of NVD CVE data (bronze) → incremental normalization (silver) → curated security mart (gold/consumption ready) in DuckDB.
