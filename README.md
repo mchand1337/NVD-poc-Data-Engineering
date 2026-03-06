@@ -23,7 +23,7 @@ python src/etl/bronze/load/normalize_to_duckdb.py
 python -m duckdb data/nvd.duckdb -c "\i src/etl/queries/explore/explore_query.sql"
 ```
 
-### Data flow (what to say in the interview)
+### Data flow
 - **Bronze**: Raw JSON from NVD stored as `bronze_nvd.cve_raw`, `cvss_v3_raw`, `cve_references_raw` with lineage columns (`source_file`, `ingested_at`).
 - **Silver**: Recent batch-only upserts into `silver_nvd.cve`, `cve_references`, `cvss_v3` using batch-date filters for idempotency.
 - **(Future) Gold/Security mart**: Space reserved for curated, business-facing aggregates (e.g., exploit-labeled backlog, severity SLA tracking). Highlight how you'd materialize views into `security_mart` / `gold_security`.
@@ -68,7 +68,7 @@ ORDER BY v.base_score DESC
 LIMIT 50;
 ```
 
-### What to improve if asked (roadmap talking points)
+### What to improve
 - Orchestration: add a simple Dagster/Airflow or GitHub Actions schedule for daily pulls.
 - Quality: add schema tests (e.g., Great Expectations/dbt) for non-null severities, valid CVE IDs, and monotonic `last_modified` per CVE.
 - Serving: expose curated metrics via FastAPI (uvicorn) or ship Parquet extracts to S3/minio.
@@ -82,7 +82,7 @@ LIMIT 50;
 - `src/etl/queries/explore/`: demo queries and quick stats.
 - `src/etl/gold/` and `src/etl/consumption/`: placeholders for curated marts/views.
 
-### Demo cadence (suggested talk track)
+### Demo cadence
 1) Show folder layout and layer purpose (bronze→silver→gold/consumption).
 2) Run fetch → normalize → queries, narrating lineage and idempotency.
 3) Highlight exploit/patch-focused join and severity distribution.
