@@ -41,6 +41,10 @@ python src/etl/bronze/load/normalize_to_duckdb.py
 python -m duckdb data/nvd.duckdb -c "\i src/etl/queries/explore/explore_query.sql"
 ```
 
+### Data Architecture
+<img width="1116" height="329" alt="image" src="https://github.com/user-attachments/assets/cd8e069a-b980-4de3-8007-5116ff2e901c" />
+
+
 ### Data flow
 - **Bronze**: Raw JSON from NVD stored as `bronze_nvd.cve_raw`, `cvss_v3_raw`, `cve_references_raw` with lineage columns (`source_file`, `ingested_at`).
 - **Silver**: Recent batch-only upserts into `silver_nvd.cve`, `cve_references`, `cvss_v3` using batch-date filters for idempotency.
