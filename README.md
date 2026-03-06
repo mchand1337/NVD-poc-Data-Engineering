@@ -41,7 +41,7 @@ python -m duckdb data/nvd.duckdb -c "\i src/etl/queries/explore/explore_query.sq
 - **Silver**: Recent batch-only upserts into `silver_nvd.cve`, `cve_references`, `cvss_v3` using batch-date filters for idempotency.
 - **(Future) Gold/Security mart**: Space reserved for curated, business-facing aggregates (e.g., exploit-labeled backlog, severity SLA tracking). Highlight how you'd materialize views into `security_mart` / `gold_security`.
 
-### Story hooks for product security
+### Key points for Product Security
 - Prioritize: Exploitable-tagged CVEs and high-severity (base_score >= 7) surfaced quickly.
 - Recency: Show most recently modified CVEs to focus patching.
 - Coverage: Count by severity and by tag to spot hotspots (exploit vs. patch references).
