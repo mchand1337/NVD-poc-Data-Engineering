@@ -47,25 +47,40 @@ FROM bronze_nvd.cve_raw
 ORDER BY last_modified DESC
 LIMIT 10;
 ```
+
 - Exploit or patch-related CVEs (joined view):
 ```sql
 SELECT
-  c.cve_id,
-  c.published,
-  c.last_modified,
-  c.description,
-  r.tags,
-  v.vector,
-  v.base_score,
-  v.base_severity,
-  v.exploitability_score,
-  v.impact_score
-FROM bronze_nvd.cve_raw AS c
-JOIN bronze_nvd.cvss_v3_raw AS v ON c.cve_id = v.cve_id
-JOIN bronze_nvd.cve_references_raw AS r ON c.cve_id = r.cve_id
-WHERE LOWER(r.tags) LIKE '%exploit%' OR LOWER(r.tags) LIKE '%patch%'
-ORDER BY v.base_score DESC
-LIMIT 50;
+    c.cve_id,
+    c.published,
+    c.last_modified,
+    c.description,
+    v.version,
+    v.vector,
+    v.base_severity,
+    v.base_score,
+    v.exploitability_score,
+    v.impact_score,
+    regexp_extract(v.vector, 'AV:([A-Z])', 1) AS attack_vector,
+    regexp_extract(v.vector, 'AC:([A-Z])', 1) AS attack_complexity,
+    regexp_extract(v.vector, 'PR:([A-Z])', 1) AS privileges_required,
+    regexp_extract(v.vector, 'UI:([A-Z])', 1) AS user_interaction,
+    regexp_extract(v.vector, 'S:([A-Z])', 1) AS scope,
+    regexp_extract(v.vector, 'C:([A-Z])', 1) AS confidentiality_impact,
+    regexp_extract(v.vector, 'I:([A-Z])', 1) AS integrity_impact,
+    regexp_extract(v.vector, 'A:([A-Z])', 1) AS availability_impact,
+    CASE v.base_severity
+        WHEN 'CRITICAL' THEN 4
+        WHEN 'HIGH' THEN 3
+        WHEN 'MEDIUM' THEN 2
+        WHEN 'LOW' THEN 1
+        ELSE 0
+    END,
+    v.base_severity = 'CRITICAL',
+    CURRENT_TIMESTAMP
+FROM bronze_nvd.cve_raw c
+LEFT JOIN bronze_nvd.cvss_v3_raw v
+ON c.cve_id = v.cve_id;
 ```
 
 ### What to improve
