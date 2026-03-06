@@ -5,6 +5,19 @@
 - Idempotent batch loads with schema separation and batch-date guards.
 - Exploratory queries that surface actionable signals for a product security audience (e.g., exploitable CVEs, severity mix, recency).
 
+### Quick Facts
+| Metric Category        | Abbreviation | Grade in Your Vector | Meaning                      | Possible Grades                                    |
+| ---------------------- | ------------ | -------------------- | ---------------------------- | -------------------------------------------------- |
+| Attack Vector          | AV           | L                    | Local access required        | N (Network), A (Adjacent), L (Local), P (Physical) |
+| Attack Complexity      | AC           | L                    | Low complexity to exploit    | L (Low), H (High)                                  |
+| Privileges Required    | PR           | L                    | Low privileges needed        | N (None), L (Low), H (High)                        |
+| User Interaction       | UI           | N                    | No user interaction required | N (None), R (Required)                             |
+| Scope                  | S            | U                    | Scope unchanged              | U (Unchanged), C (Changed)                         |
+| Confidentiality Impact | C            | N                    | No confidentiality impact    | N (None), L (Low), H (High)                        |
+| Integrity Impact       | I            | N                    | No integrity impact          | N (None), L (Low), H (High)                        |
+| Availability Impact    | A            | L                    | Low availability impact      | N (None), L (Low), H (High)                        |
+
+
 ### Quickstart (local, ~5 minutes)
 1) Install deps (Python 3.11+):
 ```bash
