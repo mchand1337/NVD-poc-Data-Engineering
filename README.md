@@ -108,7 +108,7 @@ ON c.cve_id = v.cve_id;
 - `src/etl/bronze/ddl/`: base tables for raw CVE, CVSS, references.
 - `src/etl/silver/ddl/` and `src/etl/silver/load/`: incremental batch loads into cleaner silver tables.
 - `src/etl/queries/explore/`: demo queries and quick stats.
-- `src/etl/gold/` and `src/etl/consumption/`: placeholders for curated marts/views.
+- `src/etl/gold/` and `src/etl/consumption/`: polished FACT and DIM tables in gold, and curated reporting tables in consumption layer.
 
 ### Demo cadence
 1) Show folder layout and layer purpose (bronze→silver→gold/consumption).

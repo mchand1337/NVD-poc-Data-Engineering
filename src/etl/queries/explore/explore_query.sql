@@ -1,7 +1,7 @@
 -- === Explore the silver data: vulernability_summary ===
 SELECT *
 FROM silver_nvd.vulnerability_summary
-LIMIT 100;
+LIMIT 10;
 
 
 -- === Fast spotlight: exploitable or patch-related, ordered by severity ===
