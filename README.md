@@ -112,6 +112,24 @@ ON c.cve_id = v.cve_id;
 - Serving: expose curated metrics via FastAPI (uvicorn) or ship Parquet extracts to S3/minio.
 - Enrichment: map CPEs to product ownership, add EPSS/KEV feeds, and compute risk scores.
 - Observability: add row counts and freshness checks per layer, log batch IDs, and publish a run report.
+- Text-to-SQL agent PoC for end user:
+
+                User
+                 │
+                 ▼
+          Supervisor LLM
+                 │
+       MCP Client Interface
+                 │
+     ┌───────────┼───────────┐
+     ▼           ▼           ▼
+Search Tool   Python Tool   Text-to-SQL Tool
+                               │
+                               ▼
+                           Vanna
+                               │
+                               ▼
+                            Database
 
 ### Repo map
 - `src/etl/bronze/load/`: fetch raw JSON and normalize into DuckDB schemas.
