@@ -1,5 +1,9 @@
 ## NVD PoC – Data Engineering
 
+### Flashy Output
+<img width="5120" height="1440" alt="image" src="https://github.com/user-attachments/assets/c22eefaf-6627-427b-b081-c91480a3a2d6" />
+
+
 ### What this repo demonstrates
 - End-to-end ingestion of NVD CVE data (bronze) → incremental normalization (silver) → curated security mart (gold/consumption ready) in DuckDB.
 - Idempotent batch loads with schema separation and batch-date guards.
