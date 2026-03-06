@@ -44,7 +44,7 @@ python -m duckdb data/nvd.duckdb -c "\i src/etl/queries/explore/explore_query.sq
 ### Key points for Product Security
 - Prioritize: Exploitable-tagged CVEs and high-severity (base_score >= 7) surfaced quickly.
 - Recency: Show most recently modified CVEs to focus patching.
-- Coverage: Count by severity and by tag to spot hotspots (exploit vs. patch references).
+- Coverage: Count by severity and by tag to spot hotspots.
 - Idempotency & traceability: Batch-date filters and `source_file` lineage keep reruns safe.
 
 ### Sample queries to demo (DuckDB)
@@ -99,6 +99,7 @@ ON c.cve_id = v.cve_id;
 ### What to improve
 - Orchestration: add a simple Dagster/Airflow or GitHub Actions schedule for daily pulls.
 - Quality: add schema tests (e.g., Great Expectations/dbt) for non-null severities, valid CVE IDs, and monotonic `last_modified` per CVE.
+- Semantic Layer: build curated report(s) and expose to a front end (PowerBI, React, streamlit, etc.)
 - Serving: expose curated metrics via FastAPI (uvicorn) or ship Parquet extracts to S3/minio.
 - Enrichment: map CPEs to product ownership, add EPSS/KEV feeds, and compute risk scores.
 - Observability: add row counts and freshness checks per layer, log batch IDs, and publish a run report.
