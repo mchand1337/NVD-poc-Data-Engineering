@@ -114,6 +114,7 @@ ON c.cve_id = v.cve_id;
 - Observability: add row counts and freshness checks per layer, log batch IDs, and publish a run report.
 - Text-to-SQL agent PoC for end user:
 
+```
                 User
                  │
                  ▼
@@ -130,6 +131,7 @@ Search Tool   Python Tool   Text-to-SQL Tool
                                │
                                ▼
                             Database
+```
 
 ### Repo map
 - `src/etl/bronze/load/`: fetch raw JSON and normalize into DuckDB schemas.
