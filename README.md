@@ -6,7 +6,7 @@
 - Exploratory queries that surface actionable signals for a product security audience (e.g., exploitable CVEs, severity mix, recency).
 
 ### Quick Facts
-| Metric Category        | Abbreviation | Grade in Your Vector | Meaning                      | Possible Grades                                    |
+| Metric Category        | Abbreviation | Grade Vector         | Meaning                      | Possible Grades                                    |
 | ---------------------- | ------------ | -------------------- | ---------------------------- | -------------------------------------------------- |
 | Attack Vector          | AV           | L                    | Local access required        | N (Network), A (Adjacent), L (Local), P (Physical) |
 | Attack Complexity      | AC           | L                    | Low complexity to exploit    | L (Low), H (High)                                  |
